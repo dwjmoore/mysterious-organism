@@ -43,10 +43,16 @@ const pAequorFactory = (specimenNum, dna) => {
 	};
 };
 
-const speciman1 = pAequorFactory(1, mockUpStrand());
-const speciman2 = pAequorFactory(2, mockUpStrand());
-console.log(speciman1.dna);
-console.log(speciman2.dna);
-speciman1.compareDNA(speciman2);
-console.log(speciman1.willLikelySurvive());
-console.log(speciman2.willLikelySurvive());
+const pAequorArray = [];
+let specimanNum = 1;
+
+while (specimanNum <= 30) {
+	const speciman = pAequorFactory(specimanNum, mockUpStrand());
+	if (speciman.willLikelySurvive()) {
+		pAequorArray.push(speciman);
+		specimanNum++;
+		console.log("Survivable speciman added.");
+	}
+}
+
+console.log(pAequorArray);
